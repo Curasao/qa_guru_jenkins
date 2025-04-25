@@ -2,6 +2,7 @@ import allure
 import os
 from selene import browser, have, be
 from selene.support.shared import config
+from test import conftest
 config.timeout = 10
 
 def test_complete_todo():
