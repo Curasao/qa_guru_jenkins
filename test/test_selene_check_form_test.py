@@ -1,94 +1,94 @@
-
+import allure
 import os
 from selene import browser, have, be
 from selene.support.shared import config
 config.timeout = 10
 
 def test_complete_todo():
-    @allure.step("Открыть страницу DemoQA")
-    browser.open('/automation-practice-form')
+    with allure.step('Открыть страницу DemoQA'):
+        browser.open('/automation-practice-form')
 
-    @allure.step("Проверить имя пользователя")
+    with allure.step('Проверить имя пользователя'):
     #проверка имени
-    browser.element('#userName-wrapper').element('#firstName').should(be.blank).type('Dasha')
+        browser.element('#userName-wrapper').element('#firstName').should(be.blank).type('Dasha')
 
-    @allure.step("Проверка фамилии пользователя")
+    with allure.step("Проверка фамилии пользователя"):
     #проверка фамилии
-    browser.element('#userName-wrapper').element('#lastName').should(be.blank).type('Lenina')
+        browser.element('#userName-wrapper').element('#lastName').should(be.blank).type('Lenina')
 
-    @allure.step("Проверка емейл")
+    with allure.step("Проверка емейл"):
     #проверка емейл
-    browser.element('#userEmail-wrapper').element('#userEmail').should(be.blank).type('lenina5@email.com')
+        browser.element('#userEmail-wrapper').element('#userEmail').should(be.blank).type('lenina5@email.com')
 
-    @allure.step("Проверка чекбокса гендера")
+    with allure.step("Проверка чекбокса гендера"):
     #проверка чекбокса гендера
-    browser.element('#genterWrapper').element('[for=gender-radio-2]').click()
+        browser.element('#genterWrapper').element('[for=gender-radio-2]').click()
 
-    @allure.step("Проверка номера")
+    with allure.step("Проверка номера"):
     #проверка юзернейм
-    browser.element('#userNumber-wrapper').element('#userNumber').should(be.blank).type('1712345678')
+        browser.element('#userNumber-wrapper').element('#userNumber').should(be.blank).type('1712345678')
 
-    @allure.step("Проверка календаря")
+    with allure.step("Проверка календаря"):
     #проверка календаря (датапикер)
-    browser.element("#dateOfBirthInput").click()
+        browser.element("#dateOfBirthInput").click()
 
-    browser.element('.react-datepicker__month-select').click().element('option[value="3"]').click()
+        browser.element('.react-datepicker__month-select').click().element('option[value="3"]').click()
 
-    browser.element('.react-datepicker__year-select').click().element('option[value="2008"]').click()
+        browser.element('.react-datepicker__year-select').click().element('option[value="2008"]').click()
 
-    browser.element('.react-datepicker__day--005').click()
+        browser.element('.react-datepicker__day--005').click()
 
-    @allure.step("Проверка поля хобби")
+    with allure.step("Проверка поля хобби"):
     #проверка поля хобби
-    browser.element("#hobbiesWrapper").click()
+        browser.element("#hobbiesWrapper").click()
 
-    browser.element('#hobbiesWrapper').element('[for=hobbies-checkbox-3]').click()
+        browser.element('#hobbiesWrapper').element('[for=hobbies-checkbox-3]').click()
 
-    @allure.step("Проверка выбора предметов")
+    with allure.step("Проверка выбора предметов"):
     #проверка поля subjects
-    browser.element('#subjectsWrapper').element('#subjectsInput').should(be.blank).type('E')
-    browser.element('#react-select-2-option-0').click()
+        browser.element('#subjectsWrapper').element('#subjectsInput').should(be.blank).type('E')
+        browser.element('#react-select-2-option-0').click()
 
-    @allure.step("Проверка поля текущий адрес")
+    with allure.step("Проверка поля текущий адрес"):
     #проверка поля текущий адрес
-    browser.element('#currentAddress-wrapper').element('#currentAddress').should(be.blank).type('Lenina')
+        browser.element('#currentAddress-wrapper').element('#currentAddress').should(be.blank).type('Lenina')
 
-    @allure.step("Проверка загрузки фото")
+    with allure.step("Проверка загрузки фото"):
     #проверка кнопки "Загрузить фото"
-    browser.element('#uploadPicture').type(os.path.abspath('water.jpg'))
+        browser.element('#uploadPicture').type(os.path.abspath('water.jpg'))
 
-    @allure.step("Проверка дропдаун списка город и штат")
+    with allure.step("Проверка дропдаун списка город и штат"):
     #проверка дропдаун списков город и штат
 
-    browser.element('#state').execute_script("document.querySelector('#state').scrollIntoView()")
-    browser.element('#state').click()
+        browser.element('#state').execute_script("document.querySelector('#state').scrollIntoView()")
+        browser.element('#state').click()
 
-    browser.element('#react-select-3-option-0').click()
-    browser.element('#city').click()
-    browser.element('#react-select-4-option-0').click()
+        browser.element('#react-select-3-option-0').click()
+        browser.element('#city').click()
+        browser.element('#react-select-4-option-0').click()
 
-    @allure.step("Отправка формы")
+    with allure.step("Отправка формы"):
     #отправка формы
-    browser.element('#submit').click()
+        browser.element('#submit').click()
 
-    @allure.step("Проверка что форма видима")
-    browser.element(".table").should(be.visible)
+    with allure.step("Проверка что форма видима"):
+        browser.element(".table").should(be.visible)
 
     # Проверка содержимого таблицы
 
-    @allure.step("Проверка что указаны валидные данные")
-    browser.element(".table").element('tr:nth-child(1) td:last-child').should(have.text('Dasha'))
+    with allure.step("Проверка что указаны валидные данные"):
+        browser.element(".table").element('tr:nth-child(1) td:last-child').should(have.text('Dasha'))
 
-    browser.element(".table").element('tr:nth-child(3) td:last-child').should(have.text('Female'))
-    browser.element(".table").element('tr:nth-child(2) td:last-child').should(have.text('lenina5@email.com'))
-    browser.element(".table").element('tr:nth-child(4) td:last-child').should(have.text('1712345678'))
-    browser.element(".table").element('tr:nth-child(5) td:last-child').should(have.text('05 April,2008'))
-    browser.element(".table").element('tr:nth-child(1) td:last-child').should(have.text('Lenina'))
-    browser.element(".table").element('tr:nth-child(6) td:last-child').should(have.text('English'))
-    browser.element(".table").element('tr:nth-child(7) td:last-child').should(have.text('Reading, Music'))
-    browser.element(".table").element('tr:nth-child(8) td:last-child').should(have.text('water.jpg'))
-    browser.element(".table").element('tr:nth-child(9) td:last-child').should(have.text('Lenina'))
-    browser.element(".table").element('tr:nth-child(10) td:last-child').should(have.text('NCR Delhi'))
+        browser.element(".table").element('tr:nth-child(3) td:last-child').should(have.text('Female'))
+        browser.element(".table").element('tr:nth-child(2) td:last-child').should(have.text('lenina5@email.com'))
+        browser.element(".table").element('tr:nth-child(4) td:last-child').should(have.text('1712345678'))
+        browser.element(".table").element('tr:nth-child(5) td:last-child').should(have.text('05 April,2008'))
+        browser.element(".table").element('tr:nth-child(1) td:last-child').should(have.text('Lenina'))
+        browser.element(".table").element('tr:nth-child(6) td:last-child').should(have.text('English'))
+        browser.element(".table").element('tr:nth-child(7) td:last-child').should(have.text('Reading, Music'))
+        browser.element(".table").element('tr:nth-child(8) td:last-child').should(have.text('water.jpg'))
+        browser.element(".table").element('tr:nth-child(9) td:last-child').should(have.text('Lenina'))
+        browser.element(".table").element('tr:nth-child(10) td:last-child').should(have.text('NCR Delhi'))
 
-    @allure.step("Проверка, что закрыто модальное окно")
-    browser.element('#closeLargeModal').click()
+    with allure.step("Проверка, что закрыто модальное окно"):
+        browser.element('#closeLargeModal').click()
