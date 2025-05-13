@@ -35,7 +35,7 @@ def setup_browser(request):
 
 
 @pytest.fixture(scope='function', autouse=True)
-def browser_management():
+def browser_management(options=None):
     browser.config.base_url = 'https://demoqa.com'
 
 
@@ -49,6 +49,7 @@ def browser_management():
     ↑ if we would want to use Firefox with custom browser options instead of Chrome
     '''
     driver_options = webdriver.ChromeOptions()
+    driver_options.add_argument('--timeout=60')
     #driver_options.add_argument('')
 
     # browser.config.driver = webdriver.Chrome(
