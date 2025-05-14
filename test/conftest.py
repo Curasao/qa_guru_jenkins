@@ -1,45 +1,15 @@
 import pytest,os
 from selene import browser
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selene import Browser, Config
 
-from selene.api import *
-from selenium.common.exceptions import InvalidSessionIdException
-import pytest
-
-from utils import attach
-
-@pytest.fixture(scope='function')
-def setup_browser(request):
-    options = Options()
-    selenoid_capabilities = {
-        "browserName": "chrome",
-        "browserVersion": "128.0",
-        "selenoid:options": {
-            "enableVNC": True,
-            "enableVideo": True
-        }
-    }
-    options.capabilities.update(selenoid_capabilities)
-
-    browser.config.driver = webdriver.Remote(
-        command_executor=f"https://user1:1234@selenoid.autotests.cloud/wd/hub",
-        options=options)
-    yield browser
-
-    attach.add_screenshot(browser)
-    attach.add_logs(browser)
-    attach.add_html(browser)
-
-
-    browser.quit()
-
+# from selenium.webdriver.chrome.service import Service as ChromeService
+# from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.fixture(scope='function', autouse=True)
-def browser_management(options=None):
+def browser_management():
     browser.config.base_url = 'https://demoqa.com'
+
 
 
     # browser.config.type_by_js = True
@@ -52,7 +22,6 @@ def browser_management(options=None):
     ↑ if we would want to use Firefox with custom browser options instead of Chrome
     '''
     driver_options = webdriver.ChromeOptions()
-    driver_options.add_argument('--timeout=60')
     #driver_options.add_argument('')
 
     # browser.config.driver = webdriver.Chrome(
@@ -68,11 +37,7 @@ def browser_management(options=None):
 
     yield browser
 
-    try:
-        browser.quit()
-    except InvalidSessionIdException:
-        print('ОШибка')
-
+    browser.quit()
     '''
     ↑ Selene would automatically close browser for us in the very end of all tests
     but by we call browser.quit() explicitely after yield inside fixture of scope='function'
