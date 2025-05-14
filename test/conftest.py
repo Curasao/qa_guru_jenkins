@@ -3,6 +3,9 @@ from selene import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
+
+from selene.api import *
+from selenium.common.exceptions import InvalidSessionIdException
 import pytest
 
 from utils import attach
@@ -65,7 +68,11 @@ def browser_management(options=None):
 
     yield browser
 
-    browser.quit()
+    try:
+        browser.quit()
+    except InvalidSessionIdException:
+        print('ОШибка')
+
     '''
     ↑ Selene would automatically close browser for us in the very end of all tests
     but by we call browser.quit() explicitely after yield inside fixture of scope='function'

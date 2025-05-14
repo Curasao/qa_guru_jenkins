@@ -3,6 +3,8 @@ import os
 from selene import browser, have, be
 from selene.support.shared import config
 from test import conftest
+from selene.api import *
+
 config.timeout = 10
 
 def test_complete_todo(setup_browser):
@@ -56,7 +58,7 @@ def test_complete_todo(setup_browser):
 
     with allure.step("Проверка загрузки фото"):
     #проверка кнопки "Загрузить фото"
-        browser.element('#uploadPicture').type(os.path.abspath('water.jpg'))
+        browser.element('#uploadPicture').type(os.path.abspath('images/water.jpg'))
 
     with allure.step("Проверка дропдаун списка город и штат"):
     #проверка дропдаун списков город и штат
