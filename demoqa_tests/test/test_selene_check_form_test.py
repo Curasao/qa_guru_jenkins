@@ -2,12 +2,12 @@ import allure
 import os
 from selene import browser, have, be
 from selene.support.shared import config
-from test import conftest
 
 
-config.timeout = 10
 
-def test_complete_todo(setup_browser):
+config.timeout = 30
+
+def test_complete_todo(driver):
     with allure.step('Открыть страницу DemoQA'):
         browser.open('/automation-practice-form')
 
