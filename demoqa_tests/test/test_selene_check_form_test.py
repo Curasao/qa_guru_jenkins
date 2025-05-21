@@ -7,7 +7,7 @@ from selene.support.shared import config
 
 config.timeout = 30
 
-def test_complete_todo(driver):
+def test_complete_todo():
     with allure.step('Открыть страницу DemoQA'):
         browser.open('/automation-practice-form')
 
