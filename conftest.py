@@ -7,6 +7,8 @@ import pytest
 
 from utils import attach
 
+
+
 @pytest.fixture(scope='function')
 def setup_browser(request):
     driver_options = webdriver.ChromeOptions()
