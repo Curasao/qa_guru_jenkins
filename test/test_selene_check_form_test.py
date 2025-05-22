@@ -3,8 +3,6 @@ import os
 from selene import browser, have, be
 from selene.support.shared import config
 
-
-
 config.timeout = 30
 
 def test_complete_todo():
