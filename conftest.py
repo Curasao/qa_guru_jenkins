@@ -1,8 +1,6 @@
-import pytest,os
 from selene import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selene import Browser, Config
 import pytest
 
 from utils import attach
@@ -19,8 +17,6 @@ def setup_browser(request):
         }
     }
     options.capabilities.update(selenoid_capabilities)
-
-
 
 
 
