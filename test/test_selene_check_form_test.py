@@ -9,7 +9,7 @@ config.timeout = 30
 
 def test_complete_todo():
     with allure.step('Открыть страницу DemoQA'):
-        browser.open('https://demoqa.com/automation-practice-form')
+        browser.open('/automation-practice-form')
 
     with allure.step('Проверить имя пользователя'):
     #проверка имени
