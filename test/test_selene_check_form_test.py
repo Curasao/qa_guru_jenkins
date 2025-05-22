@@ -9,7 +9,7 @@ config.timeout = 30
 
 def test_complete_todo():
     with allure.step('Открыть страницу DemoQA'):
-        browser.open('/automation-practice-form')
+        browser.open('https://demoqa.com/automation-practice-form')
 
     with allure.step('Проверить имя пользователя'):
     #проверка имени
@@ -92,5 +92,6 @@ def test_complete_todo():
         browser.element(".table").element('tr:nth-child(8) td:last-child').should(have.text('water.jpg'))
         browser.element(".table").element('tr:nth-child(9) td:last-child').should(have.text('Lenina'))
         browser.element(".table").element('tr:nth-child(10) td:last-child').should(have.text('NCR Delhi'))
+        browser.element('#closeLargeModal').click()
 
 
