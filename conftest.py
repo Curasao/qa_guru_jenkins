@@ -9,10 +9,16 @@ from utils import attach
 
 @pytest.fixture(scope='function')
 def setup_browser(request):
+    driver_options = webdriver.ChromeOptions()
+    driver_options.page_load_strategy = 'eager'
+    browser.config.driver_options = driver_options
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
+
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
-        "browserVersion": "128.0",
+        "browserVersion": "127.0",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
@@ -43,28 +49,6 @@ def browser_management():
     browser.config.base_url = 'https://demoqa.com'
 
 
-    # browser.config.type_by_js = True
-    '''
-    ↑ if we would want to type text via JavaScript to speed up tests a bit
-    '''
-
-    # driver_options = webdriver.FirefoxOptions()
-    '''
-    ↑ if we would want to use Firefox with custom browser options instead of Chrome
-    '''
-    driver_options = webdriver.ChromeOptions()
-    #driver_options.add_argument('')
-
-    # browser.config.driver = webdriver.Chrome(
-    #     service=ChromeService(executable_path=ChromeDriverManager().install()),
-    #     options=driver_options,
-    # )
-    '''
-    ↑ one day we need something like this for some complicated browser setup
-    or support of some specific browser or driver
-    ↓ but for now it's enough just to pass driver options to Selene's config
-    '''
-    browser.config.driver_options = driver_options
 
     yield browser
 
