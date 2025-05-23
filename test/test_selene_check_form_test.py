@@ -40,10 +40,11 @@ def test_complete_todo():
         browser.element('.react-datepicker__day--005').click()
 
     with allure.step("Проверка поля хобби"):
-    #проверка поля хобби
-        browser.element("#hobbiesWrapper").click()
+        #проверка поля хобби
+        #browser.element("#hobbiesWrapper").click()
 
-        browser.element('#hobbiesWrapper').element('[for=hobbies-checkbox-3]').click()
+        #browser.element('#hobbiesWrapper').element('[for=hobbies-checkbox-3]').click()
+        browser.element('[for=hobbies-checkbox-3]').click()
 
     with allure.step("Проверка выбора предметов"):
     #проверка поля subjects
