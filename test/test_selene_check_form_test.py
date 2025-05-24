@@ -3,6 +3,7 @@ import os
 from selene import browser, have, be
 from selene.support.shared import config
 from selene import browser
+from pathlib import Path
 
 config.timeout = 30
 
@@ -62,7 +63,9 @@ def test_complete_todo():
 
     with allure.step("Проверка загрузки фото"):
     #проверка кнопки "Загрузить фото"
-        browser.element('#uploadPicture').type(os.path.abspath('../water.jpg'))
+
+       image_path = Path(__file__).parent / 'water.jpg'
+       browser.element('#uploadPicture').type(str(image_path))
 
     with allure.step("Проверка дропдаун списка город и штат"):
     #проверка дропдаун списков город и штат
