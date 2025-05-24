@@ -55,6 +55,8 @@ def test_complete_todo():
     #проверка поля текущий адрес
         browser.element('#currentAddress-wrapper').element('#currentAddress').should(be.blank).type('Lenina')
 
+    browser.driver().execute_script("window.scrollBy(0, 500);")
+
     with allure.step("Проверка загрузки фото"):
     #проверка кнопки "Загрузить фото"
         browser.element('#uploadPicture').type(os.path.abspath('../water.jpg'))
@@ -88,7 +90,7 @@ def test_complete_todo():
         browser.element(".table").element('tr:nth-child(1) td:last-child').should(have.text('Lenina'))
         browser.element(".table").element('tr:nth-child(6) td:last-child').should(have.text('English'))
         #browser.element(".table").element('tr:nth-child(7) td:last-child').should(have.text('Reading, Music'))
-        #browser.element(".table").element('tr:nth-child(8) td:last-child').should(have.text('water.jpg'))
+        browser.element(".table").element('tr:nth-child(8) td:last-child').should(have.text('water.jpg'))
         browser.element(".table").element('tr:nth-child(9) td:last-child').should(have.text('Lenina'))
         browser.element(".table").element('tr:nth-child(10) td:last-child').should(have.text('NCR Delhi'))
         browser.element('#closeLargeModal').click()
