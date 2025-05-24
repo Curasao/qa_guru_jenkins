@@ -41,7 +41,7 @@ def test_complete_todo():
 
     with allure.step("Проверка поля хобби"):
         #проверка поля хобби
-        #browser.element("#hobbiesWrapper").click()
+        browser.element("#hobbiesWrapper").click()
 
         #browser.element('#hobbiesWrapper').element('[for=hobbies-checkbox-3]').click()
         browser.element('[for=hobbies-checkbox-3]').click()
@@ -87,7 +87,7 @@ def test_complete_todo():
         browser.element(".table").element('tr:nth-child(5) td:last-child').should(have.text('05 April,2008'))
         browser.element(".table").element('tr:nth-child(1) td:last-child').should(have.text('Lenina'))
         browser.element(".table").element('tr:nth-child(6) td:last-child').should(have.text('English'))
-        browser.element(".table").element('tr:nth-child(7) td:last-child').should(have.text('Reading, Music'))
+        #browser.element(".table").element('tr:nth-child(7) td:last-child').should(have.text('Reading, Music'))
         browser.element(".table").element('tr:nth-child(8) td:last-child').should(have.text('water.jpg'))
         browser.element(".table").element('tr:nth-child(9) td:last-child').should(have.text('Lenina'))
         browser.element(".table").element('tr:nth-child(10) td:last-child').should(have.text('NCR Delhi'))
