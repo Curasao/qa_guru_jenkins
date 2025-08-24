@@ -3,9 +3,14 @@ from selene import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
+from dotenv import load_dotenv
 import pytest
 
 from utils import attach
+
+@pytest.fixture(scope='session', autouse=True)
+def load_env():
+    load_dotenv()
 
 @pytest.fixture(scope='function', autouse=True)
 def setup_browser(request):
