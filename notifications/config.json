@@ -1,9 +1,9 @@
 {
   "base": {
-    "project": "${JOB_BASE_NAME}",
+    "project": "21-Crunchy_fox-TgNotifDemoQA_lesson13",
     "environment": "some env",
     "comment": "some comment",
-    "reportLink": "${BUILD_URL}",
+    "reportLink": "https://jenkins.autotests.cloud/job/21-Crunchy_fox-TgNotifDemoQA_lesson13/",
     "language": "en",
     "allureFolder": "allure-report",
     "enableChart": true
