@@ -6,10 +6,11 @@
     "reportLink": "https://jenkins.autotests.cloud/job/21-Crunchy_fox-TgNotifDemoQA_lesson13/",
     "language": "en",
     "allureFolder": "allure-report",
-    "enableChart": true
+    "enableChart": true,
+    "enableSuitesPublishing": true
   },
   "telegram": {
-    "token": "7984087235:AAF0qIRADQiKzfMpre73YEFvVpCXXWlmIec",
+    "token": "7984087235:AAECqo1Gbbv0fmsnli5ZtA6BWFOLKUQ_qRE",
     "chat": "-1002543356498",
     "replyTo": ""
   }
